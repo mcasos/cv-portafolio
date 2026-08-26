@@ -1,6 +1,6 @@
 # CV + Portafolio bilingüe
 
-Sitio estático de Miguel André Casós Torre, desarrollador full-stack especializado en automatización, IA local y datos. Español vive en `/` e inglés en `/en/`.
+Sitio estático de mi, desarrollador full-stack especializado en automatización, IA local y datos. Español vive en `/` e inglés en `/en/`.
 
 ## Casos publicados
 

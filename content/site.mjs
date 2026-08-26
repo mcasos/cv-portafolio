@@ -18,10 +18,10 @@ export const site = {
     dates: { es: "2022 — Actualidad", en: "2022 — Present" },
   },
   skills: [
-    { title: { es: "Producto e IA", en: "Product & AI" }, items: ["Next.js / React / TypeScript", "FastAPI / Python 3.12", "LLM locales / RAG", "APIs tipadas"] },
-    { title: { es: "Datos", en: "Data" }, items: ["Power BI / DAX", "Excel", "Modelado relacional", "Data quality"] },
-    { title: { es: "Automatización", en: "Automation" }, items: ["n8n", "IMAP + Telegram / WhatsApp", "OCR local", "Workflows auditables"] },
-    { title: { es: "Calidad", en: "Quality" }, items: ["pytest / Vitest", "Ruff / mypy", "ESLint / TypeScript", "CI y documentación"] },
+    { title: { es: "Producto e IA", en: "Product & AI" }, items: ["Next.js / React / TypeScript", "FastAPI / Python 3.12", { es: "LLM locales / RAG", en: "Local LLMs / RAG" }, { es: "APIs tipadas", en: "Typed APIs" }] },
+    { title: { es: "Datos", en: "Data" }, items: ["Power BI / DAX", "Excel", { es: "Modelado relacional", en: "Relational modeling" }, "Data quality"] },
+    { title: { es: "Automatización", en: "Automation" }, items: ["n8n", "IMAP + Telegram / WhatsApp", { es: "OCR local", en: "Local OCR" }, { es: "Workflows auditables", en: "Auditable workflows" }] },
+    { title: { es: "Calidad", en: "Quality" }, items: ["pytest / Vitest", "Ruff / mypy", "ESLint / TypeScript", { es: "CI y documentación", en: "CI and documentation" }] },
   ],
 };
 
@@ -204,7 +204,7 @@ export const projects = [
     problem: { es: "Elegir un modelo local por popularidad oculta diferencias de calidad, latencia, confiabilidad y consumo; además, una interfaz de chat común no demuestra privacidad ni trazabilidad.", en: "Choosing a local model by popularity hides differences in quality, latency, reliability, and resource use; a generic chat UI also fails to prove privacy or traceability." },
     solution: { es: "Construí una plataforma local-first que registra cada ejecución, normaliza métricas y fallos, filtra capacidades antes de puntuar y explica por qué recomienda o descarta un modelo. En RAG separa respuesta, citas y afirmaciones sin respaldo.", en: "I built a local-first platform that records every run, normalizes metrics and failures, filters capabilities before scoring, and explains why a model is recommended or rejected. Its RAG flow separates the answer, citations, and unsupported claims." },
     quality: { es: "Candidato local v1.0.0-rc.1: 131 pytest, 15 Vitest, 26 pruebas de scripts, 6 E2E, smoke y reinicio aprobados. Un soak de 30.07 minutos completó 20/20 intentos sin fallos ni bloqueos.", en: "Local candidate v1.0.0-rc.1: 131 pytest, 15 Vitest, 26 script tests, 6 E2E checks, smoke, and restart passed. A 30.07-minute soak completed 20/20 attempts with no failures or stuck runs." },
-    status: { es: "RC local verificado · publicación pendiente", en: "Verified local RC · publication pending" },
+    status: { es: "RC local verificado · repositorio público", en: "Verified local RC · public repository" },
     gallery: [
       ["assets/projects/localforge/overview.png", { es: "Superficie general del laboratorio", en: "Lab overview" }],
       ["assets/projects/localforge/smart-router.png", { es: "Router de modelos con criterios explícitos", en: "Model router with explicit criteria" }],
@@ -226,7 +226,7 @@ export const projects = [
     problem: { es: "La facturación de transporte combina guías, tickets, viajes, crédito y reglas por cliente. Sin una sola fuente de verdad, los errores se multiplican.", en: "Transport invoicing combines shipping documents, weight tickets, trips, credit terms, and customer rules. Without a single source of truth, errors multiply." },
     solution: { es: "El sistema procesa documentos localmente, exige revisar los datos detectados, conserva versiones y registra cada cambio. Los importes usan enteros para evitar errores de punto flotante.", en: "The system processes documents locally, requires review of detected data, preserves versions, and logs every change. Amounts use integer arithmetic to avoid floating-point errors." },
     quality: { es: "Typecheck, lint, 453 pruebas y build de producción aprobados; 3 pruebas dependientes del entorno permanecen omitidas. No incluye identidad tributaria real ni emisión SUNAT productiva.", en: "Type checking, linting, 453 tests, and the production build passed; 3 environment-dependent tests remain skipped. It includes no real tax identity or production SUNAT issuance." },
-    status: { es: "Repositorio público en preparación", en: "Public repository in preparation" },
+    status: { es: "Repositorio público · SUNAT simulado", en: "Public repository · simulated SUNAT integration" },
     gallery: [
       ["assets/projects/rutafactura/dashboard.png", { es: "Dashboard por empresa emisora", en: "Dashboard by issuing company" }],
       ["assets/projects/rutafactura/flujo-guiado.png", { es: "Flujo guiado de preparación", en: "Guided preparation flow" }],
@@ -263,7 +263,7 @@ export const projects = [
     problem: { es: "Comparar vuelos familiares requiere equipaje, alcance del precio, monedas y datos incompletos; ordenar solo por tarifa conduce a decisiones erróneas.", en: "Comparing family flights requires handling baggage, price scope, currencies, and incomplete data; sorting only by fare leads to poor decisions." },
     solution: { es: "La lógica separa proveedores, dominio y presentación. Los valores desconocidos permanecen explícitos y el ranking evita comparar cantidades incompatibles.", en: "The architecture separates providers, domain logic, and presentation. Unknown values remain explicit, and ranking avoids comparing incompatible amounts." },
     quality: { es: "243 pruebas, Ruff y mypy aprobados. La evidencia visual se añadirá cuando Tcl/Tk funcione correctamente en el entorno de captura.", en: "243 tests, Ruff, and mypy passed. Visual evidence will be added once Tcl/Tk works correctly in the capture environment." },
-    status: { es: "Repositorio público en preparación", en: "Public repository in preparation" },
+    status: { es: "Repositorio público · modo mock reproducible", en: "Public repository · reproducible mock mode" },
   },
   {
     slug: "control-alojamiento", icon: "CA", primary: false,
@@ -277,7 +277,7 @@ export const projects = [
     problem: { es: "La información dispersa dificulta conocer ocupación, pagos pendientes y consistencia de caja.", en: "Scattered information makes it difficult to track occupancy, pending payments, and cash consistency." },
     solution: { es: "La interfaz prioriza tareas diarias y desacopla dominio, persistencia y seguridad. Puede operar localmente y sincronizar con Supabase cuando está configurado.", en: "The interface prioritizes daily tasks and separates domain, persistence, and security. It can work locally and sync with Supabase when configured." },
     quality: { es: "28 pruebas, lint, typecheck y build aprobados con datos ficticios.", en: "28 tests, linting, type checking, and the production build passed using fictional data." },
-    status: { es: "Repositorio público en preparación", en: "Public repository in preparation" },
+    status: { es: "Repositorio público · Supabase opcional", en: "Public repository · optional Supabase sync" },
     gallery: [["assets/projects/control-alojamiento/dashboard.png", { es: "Panel operativo móvil", en: "Mobile operations dashboard" }]],
   },
   {

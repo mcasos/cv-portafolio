@@ -124,7 +124,7 @@ function home(lang) {
   const title = `${site.name} — ${l.pageTitle}`;
   const primary = projects.filter((project) => project.primary).map((project) => projectCard(project, lang)).join("");
   const support = projects.filter((project) => !project.primary).map((project) => projectCard(project, lang)).join("");
-  const skillCards = site.skills.map((skill) => `<article class="skill-card"><h3>${esc(pick(skill.title, lang))}</h3><ul>${skill.items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul></article>`).join("");
+  const skillCards = site.skills.map((skill) => `<article class="skill-card"><h3>${esc(pick(skill.title, lang))}</h3><ul>${skill.items.map((item) => `<li>${esc(pick(item, lang))}</li>`).join("")}</ul></article>`).join("");
   const credentials = certifications.map((credential) => credentialCard(credential, lang, assetPrefix)).join("");
 
   return `${head({ lang, title, description: pick(site.summary, lang), canonical, alternate, assetPrefix })}

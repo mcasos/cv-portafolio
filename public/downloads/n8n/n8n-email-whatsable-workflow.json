@@ -1,0 +1,94 @@
+{
+  "id": "email-whatsable-alert-template",
+  "name": "Email Subject Alert to WhatsApp via WhatsAble",
+  "nodes": [
+    {
+      "parameters": {
+        "mailbox": "INBOX",
+        "postProcessAction": "nothing",
+        "format": "resolved",
+        "options": {}
+      },
+      "id": "63311ff5-6e58-42f8-ac5b-a34eb9f5717e",
+      "name": "Email Trigger",
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const keyword = 'CAMBIA_ESTE_TEXTO';\n\nreturn $input.all()\n  .filter((item) => {\n    const subject = String(item.json.subject ?? '');\n    return subject.toLowerCase().includes(keyword.toLowerCase());\n  })\n  .map((item) => {\n    const fromText = item.json.from?.text ?? item.json.from?.value?.[0]?.address ?? 'desconocido';\n    const subject = item.json.subject ?? '(sin asunto)';\n    const receivedDate = item.json.date ?? new Date().toISOString();\n    const plainText = String(item.json.textPlain ?? item.json.textHtml ?? '')\n      .replace(/<[^>]+>/g, ' ')\n      .replace(/\\s+/g, ' ')\n      .trim()\n      .slice(0, 500);\n\n    item.json.whatsAppText = [\n      'Correo detectado por n8n',\n      `Asunto: ${subject}`,\n      `De: ${fromText}`,\n      `Fecha: ${receivedDate}`,\n      plainText ? `Resumen: ${plainText}` : 'Resumen: (sin contenido legible)'\n    ].join('\\n');\n\n    return item;\n  });"
+      },
+      "id": "0be5535a-8856-4b0b-8ff7-0bfb39b03711",
+      "name": "Filter and Format",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        520,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://dashboard.whatsable.app/api/whatsapp/messages/v2.0.0/send",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "PEGA_AQUI_TU_API_KEY"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"to\": \"PEGA_AQUI_EL_DESTINO_EN_E164\",\n  \"text\": $json.whatsAppText\n}",
+        "options": {}
+      },
+      "id": "88d750a7-1e2c-4d79-b0ea-c4ed7d3df59a",
+      "name": "Send WhatsApp via WhatsAble",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        820,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Email Trigger": {
+      "main": [
+        [
+          {
+            "node": "Filter and Format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter and Format": {
+      "main": [
+        [
+          {
+            "node": "Send WhatsApp via WhatsAble",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {},
+  "versionId": "1"
+}

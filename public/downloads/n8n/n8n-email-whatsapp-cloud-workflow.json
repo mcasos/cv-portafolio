@@ -1,0 +1,81 @@
+{
+  "id": "email-whatsapp-cloud-alert-template",
+  "name": "Email Subject Alert to Meta WhatsApp Cloud",
+  "nodes": [
+    {
+      "parameters": {
+        "mailbox": "INBOX",
+        "postProcessAction": "nothing",
+        "format": "resolved",
+        "options": {}
+      },
+      "id": "ec22945d-a8d0-46d4-8d2b-fad778488b88",
+      "name": "Email Trigger",
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2.1,
+      "position": [
+        260,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const keyword = 'CAMBIA_ESTE_TEXTO';\n\nreturn $input.all()\n  .filter((item) => {\n    const subject = String(item.json.subject ?? '');\n    return subject.toLowerCase().includes(keyword.toLowerCase());\n  })\n  .map((item) => {\n    const fromText = item.json.from?.text ?? item.json.from?.value?.[0]?.address ?? 'desconocido';\n    const subject = item.json.subject ?? '(sin asunto)';\n    const receivedDate = item.json.date ?? new Date().toISOString();\n    const plainText = String(item.json.textPlain ?? item.json.textHtml ?? '')\n      .replace(/<[^>]+>/g, ' ')\n      .replace(/\\s+/g, ' ')\n      .trim()\n      .slice(0, 500);\n\n    item.json.whatsAppText = [\n      'Correo detectado por n8n',\n      `Asunto: ${subject}`,\n      `De: ${fromText}`,\n      `Fecha: ${receivedDate}`,\n      plainText ? `Resumen: ${plainText}` : 'Resumen: (sin contenido legible)'\n    ].join('\\n');\n\n    return item;\n  });"
+      },
+      "id": "f5fc0d8e-b74e-4f57-aa83-d0c9b2b532bb",
+      "name": "Filter and Format",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        540,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "phoneNumberId": "",
+        "recipientPhoneNumber": "+51999999999",
+        "messageType": "text",
+        "textBody": "={{$json.whatsAppText}}"
+      },
+      "id": "f5025117-fcce-4e33-b703-3f7eaa612b0b",
+      "name": "Send WhatsApp Cloud Message",
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1.1,
+      "position": [
+        840,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Email Trigger": {
+      "main": [
+        [
+          {
+            "node": "Filter and Format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter and Format": {
+      "main": [
+        [
+          {
+            "node": "Send WhatsApp Cloud Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {},
+  "versionId": "1"
+}

@@ -1,0 +1,81 @@
+{
+  "id": "email-telegram-alert-template",
+  "name": "Email Subject Alert to Telegram",
+  "nodes": [
+    {
+      "parameters": {
+        "mailbox": "INBOX",
+        "postProcessAction": "nothing",
+        "format": "resolved",
+        "options": {}
+      },
+      "id": "b3e4ab55-5f0a-4ad2-8f84-bdf03ce8c3c9",
+      "name": "Email Trigger",
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2.1,
+      "position": [
+        260,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const keyword = 'CAMBIA_ESTE_TEXTO';\n\nreturn $input.all()\n  .filter((item) => {\n    const subject = String(item.json.subject ?? '');\n    return subject.toLowerCase().includes(keyword.toLowerCase());\n  })\n  .map((item) => {\n    const fromText = item.json.from?.text ?? item.json.from?.value?.[0]?.address ?? 'desconocido';\n    const subject = item.json.subject ?? '(sin asunto)';\n    const receivedDate = item.json.date ?? new Date().toISOString();\n    const plainText = String(item.json.textPlain ?? item.json.textHtml ?? '')\n      .replace(/<[^>]+>/g, ' ')\n      .replace(/\\s+/g, ' ')\n      .trim()\n      .slice(0, 500);\n\n    item.json.telegramText = [\n      '\ud83d\udce8 Correo detectado por n8n',\n      `Asunto: ${subject}`,\n      `De: ${fromText}`,\n      `Fecha: ${receivedDate}`,\n      plainText ? `Resumen: ${plainText}` : 'Resumen: (sin contenido legible)'\n    ].join('\\n');\n\n    return item;\n  });"
+      },
+      "id": "f53b1040-9e8f-4c50-bff7-08e93ee7f0b6",
+      "name": "Filter and Format",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        540,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "sendMessage",
+        "chatId": "PEGA_AQUI_TU_CHAT_ID",
+        "text": "={{$json.telegramText}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "0178d321-0ff6-4610-89c3-4e3d8b95202c",
+      "name": "Send Telegram Message",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        820,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Email Trigger": {
+      "main": [
+        [
+          {
+            "node": "Filter and Format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter and Format": {
+      "main": [
+        [
+          {
+            "node": "Send Telegram Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {},
+  "versionId": "1"
+}

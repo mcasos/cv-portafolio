@@ -1,0 +1,14 @@
+{
+  "name": "cv-portafolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "npm run build && npm run check",
+    "cv": "python scripts/build_cv.py",
+    "serve": "npx --yes serve dist"
+  },
+  "engines": { "node": ">=20" }
+}

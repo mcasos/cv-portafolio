@@ -1,0 +1,41 @@
+# Dependencias y builds
+node_modules/
+dist/
+.next/
+build/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Configuración y secretos
+.env
+.env.*
+!.env.example
+*.pem
+*.pfx
+*.key
+
+# Datos locales y documentos privados
+.data/
+/cv-source/
+~$*.docx
+*.tmp
+*.db
+*.sqlite
+*.sqlite3
+debug_scraping/
+private/
+original-documents/
+
+# Borradores locales
+cv-drafts/
+private-notes/
+.local-build/
+.git-bloqueado-*/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -24,6 +24,11 @@ const sensitivePatterns = [
   { label: "AWS access key", pattern: /\bAKIA[0-9A-Z]{16}\b/ },
   { label: "JWT-like secret", pattern: /\beyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\b/ },
 ];
+const n8nWorkflows = [
+  "n8n-email-telegram-workflow.json",
+  "n8n-email-whatsable-workflow.json",
+  "n8n-email-whatsapp-cloud-workflow.json",
+];
 
 async function walk(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -131,6 +136,28 @@ for (const file of await walk(dist)) {
   for (const { label, pattern } of sensitivePatterns) if (pattern.test(body)) errors.push(`${fileName}: possible ${label}`);
   for (const match of body.matchAll(/PEGA_AQUI_TU_[A-Z_]+/g)) {
     if (!/^PEGA_AQUI_TU_(?:API_KEY|CHAT_ID)$/.test(match[0])) errors.push(`${fileName}: unexpected placeholder ${match[0]}`);
+  }
+}
+
+for (const workflowName of n8nWorkflows) {
+  const relativePath = `downloads/n8n/${workflowName}`;
+  const body = await read(relativePath);
+  if (body === null) continue;
+  try {
+    const workflow = JSON.parse(body);
+    const outbound = workflow.nodes.filter((node) => [
+      "n8n-nodes-base.telegram",
+      "n8n-nodes-base.httpRequest",
+      "n8n-nodes-base.whatsApp",
+    ].includes(node.type));
+    if (outbound.length !== 1) errors.push(`${relativePath}: expected exactly one outbound node`);
+    for (const node of outbound) {
+      if (node.retryOnFail !== true || node.maxTries !== 3 || node.waitBetweenTries !== 2000) {
+        errors.push(`${relativePath}: outbound retry policy must be 3 attempts / 2000 ms`);
+      }
+    }
+  } catch (error) {
+    errors.push(`${relativePath}: invalid JSON (${error.message})`);
   }
 }
 

@@ -35,6 +35,7 @@ COPY = {
                 "title": "LocalForge AI Lab",
                 "tech": "Next.js · TypeScript · FastAPI · Python · LM Studio · RAG",
                 "url": "https://mcasos.github.io/cv-portafolio/projects/localforge-ai-lab/",
+                "repo_url": "https://github.com/mcasos/localforge-ai-lab",
                 "bullets": [
                     "Construí un laboratorio local-first que compara modelos, normaliza métricas y fallos, recomienda por tarea con criterios auditables y consulta documentos mediante RAG con citas.",
                     "Preparé el candidato local v1.0.0-rc.1 con 131 pytest, 15 Vitest, 26 pruebas de scripts y 6 E2E; el soak de 30.07 min completó 20/20 intentos sin fallos ni bloqueos.",
@@ -44,9 +45,10 @@ COPY = {
                 "title": "RutaFactura",
                 "tech": "Next.js · TypeScript · Prisma · SQLite · OCR",
                 "url": "https://mcasos.github.io/cv-portafolio/projects/rutafactura/",
+                "repo_url": "https://github.com/mcasos/rutafactura",
                 "bullets": [
                     "Desarrollé un MVP auditable para preparar, revisar y simular facturas de transporte con OCR local, confirmación humana, expediente digital y cobranza.",
-                    "Validé cálculos monetarios y flujos con 454 pruebas, 89 archivos de prueba y 16 migraciones; SUNAT permanece explícitamente simulado.",
+                    "Validé cálculos monetarios y flujos con 453 pruebas aprobadas, 89 archivos de prueba y 16 migraciones; SUNAT permanece explícitamente simulado.",
                 ],
             },
             {
@@ -80,6 +82,7 @@ COPY = {
                 "title": "LocalForge AI Lab",
                 "tech": "Next.js · TypeScript · FastAPI · Python · LM Studio · RAG",
                 "url": "https://mcasos.github.io/cv-portafolio/en/projects/localforge-ai-lab/",
+                "repo_url": "https://github.com/mcasos/localforge-ai-lab",
                 "bullets": [
                     "Built a local-first lab that compares models, normalizes metrics and failures, recommends by task with auditable criteria, and queries documents through citation-backed RAG.",
                     "Prepared local candidate v1.0.0-rc.1 with 131 pytest, 15 Vitest, 26 script tests, and 6 E2E checks; a 30.07-minute soak completed 20/20 attempts with no failures or stuck runs.",
@@ -89,9 +92,10 @@ COPY = {
                 "title": "RutaFactura",
                 "tech": "Next.js · TypeScript · Prisma · SQLite · OCR",
                 "url": "https://mcasos.github.io/cv-portafolio/en/projects/rutafactura/",
+                "repo_url": "https://github.com/mcasos/rutafactura",
                 "bullets": [
                     "Built an auditable MVP to prepare, review, and simulate transport invoices using local OCR, human confirmation, digital records, and collections workflows.",
-                    "Validated money calculations and workflows with 454 tests, 89 test files, and 16 migrations; SUNAT remains explicitly simulated.",
+                    "Validated money calculations and workflows with 453 passing tests, 89 test files, and 16 migrations; SUNAT remains explicitly simulated.",
                 ],
             },
             {
@@ -233,6 +237,9 @@ def build(lang):
         title.paragraph_format.keep_with_next = True
         hyperlink(title, project["title"], project["url"], 10, True)
         font(title.add_run("  |  " + project["tech"]), 8.15, color=MUTED)
+        if project.get("repo_url"):
+            font(title.add_run("  |  "), 8.15, color=MUTED)
+            hyperlink(title, "GitHub", project["repo_url"], 8.15, True)
         for bullet in project["bullets"]:
             add_bullet(doc, bullet)
 

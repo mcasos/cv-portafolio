@@ -44,6 +44,9 @@
       "name": "Send WhatsApp Cloud Message",
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
       "position": [
         840,
         300

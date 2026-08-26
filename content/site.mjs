@@ -192,6 +192,7 @@ export const projects = [
   {
     slug: "localforge-ai-lab", icon: "LF", primary: true, flagship: true,
     title: "LocalForge AI Lab",
+    repoUrl: "https://github.com/mcasos/localforge-ai-lab",
     category: { es: "Caso insignia · IA local", en: "Flagship case · Local AI" },
     summary: { es: "Laboratorio privado para evaluar modelos locales, recomendar el mejor para cada tarea y consultar documentos con RAG y citas verificables.", en: "A private lab for evaluating local models, recommending the best fit for each task, and querying documents through RAG with verifiable citations." },
     tech: ["Next.js", "TypeScript", "FastAPI", "Python", "LM Studio", "RAG", "Playwright"],
@@ -202,7 +203,7 @@ export const projects = [
     metrics: [["131", { es: "pruebas API", en: "API tests" }], ["20/20", { es: "intentos de soak", en: "soak attempts" }], ["6", { es: "pruebas E2E", en: "E2E checks" }], ["0.88%", { es: "crecimiento VRAM", en: "VRAM growth" }]],
     problem: { es: "Elegir un modelo local por popularidad oculta diferencias de calidad, latencia, confiabilidad y consumo; además, una interfaz de chat común no demuestra privacidad ni trazabilidad.", en: "Choosing a local model by popularity hides differences in quality, latency, reliability, and resource use; a generic chat UI also fails to prove privacy or traceability." },
     solution: { es: "Construí una plataforma local-first que registra cada ejecución, normaliza métricas y fallos, filtra capacidades antes de puntuar y explica por qué recomienda o descarta un modelo. En RAG separa respuesta, citas y afirmaciones sin respaldo.", en: "I built a local-first platform that records every run, normalizes metrics and failures, filters capabilities before scoring, and explains why a model is recommended or rejected. Its RAG flow separates the answer, citations, and unsupported claims." },
-    quality: { es: "Candidato local v1.0.0-rc.1: 131 pytest, 15 Vitest, 26 pruebas de scripts, 6 E2E, smoke y reinicio aprobados. Un soak de 30.07 minutos completó 20/20 intentos sin fallos ni bloqueos. El repositorio aún no se ha publicado.", en: "Local candidate v1.0.0-rc.1: 131 pytest, 15 Vitest, 26 script tests, 6 E2E checks, smoke, and restart passed. A 30.07-minute soak completed 20/20 attempts with no failures or stuck runs. The repository is not public yet." },
+    quality: { es: "Candidato local v1.0.0-rc.1: 131 pytest, 15 Vitest, 26 pruebas de scripts, 6 E2E, smoke y reinicio aprobados. Un soak de 30.07 minutos completó 20/20 intentos sin fallos ni bloqueos.", en: "Local candidate v1.0.0-rc.1: 131 pytest, 15 Vitest, 26 script tests, 6 E2E checks, smoke, and restart passed. A 30.07-minute soak completed 20/20 attempts with no failures or stuck runs." },
     status: { es: "RC local verificado · publicación pendiente", en: "Verified local RC · publication pending" },
     gallery: [
       ["assets/projects/localforge/overview.png", { es: "Superficie general del laboratorio", en: "Lab overview" }],
@@ -213,6 +214,7 @@ export const projects = [
   {
     slug: "rutafactura", icon: "RF", primary: true,
     title: "RutaFactura",
+    repoUrl: "https://github.com/mcasos/rutafactura",
     category: { es: "Proyecto principal · Full-stack", en: "Featured project · Full-stack" },
     summary: { es: "MVP para preparar, revisar y emitir de forma simulada facturas de transporte, con OCR local, expediente digital, cobranza y auditoría.", en: "An MVP for preparing, reviewing, and simulating transport invoice issuance, with local OCR, digital records, collections, and audit trails." },
     tech: ["Next.js", "TypeScript", "Prisma", "SQLite", "OCR", "Vitest"],
@@ -220,10 +222,10 @@ export const projects = [
       es: ["OCR local con confirmación humana", "Cálculos monetarios exactos", "Modo piloto seguro y auditable", "SUNAT claramente identificado como simulación"],
       en: ["Local OCR with human confirmation", "Exact monetary calculations", "Secure and auditable pilot mode", "SUNAT clearly identified as a simulation"],
     },
-    metrics: [["454", { es: "pruebas aprobadas", en: "passing tests" }], ["89", { es: "archivos de prueba", en: "test files" }], ["16", { es: "migraciones", en: "migrations" }], ["5", { es: "pasos guiados", en: "guided steps" }]],
+    metrics: [["453", { es: "pruebas aprobadas", en: "passing tests" }], ["89", { es: "archivos de prueba", en: "test files" }], ["16", { es: "migraciones", en: "migrations" }], ["5", { es: "pasos guiados", en: "guided steps" }]],
     problem: { es: "La facturación de transporte combina guías, tickets, viajes, crédito y reglas por cliente. Sin una sola fuente de verdad, los errores se multiplican.", en: "Transport invoicing combines shipping documents, weight tickets, trips, credit terms, and customer rules. Without a single source of truth, errors multiply." },
     solution: { es: "El sistema procesa documentos localmente, exige revisar los datos detectados, conserva versiones y registra cada cambio. Los importes usan enteros para evitar errores de punto flotante.", en: "The system processes documents locally, requires review of detected data, preserves versions, and logs every change. Amounts use integer arithmetic to avoid floating-point errors." },
-    quality: { es: "Typecheck, lint, 454 pruebas y build de producción aprobados. No incluye identidad tributaria real ni emisión SUNAT productiva.", en: "Type checking, linting, 454 tests, and the production build passed. It includes no real tax identity or production SUNAT issuance." },
+    quality: { es: "Typecheck, lint, 453 pruebas y build de producción aprobados; 3 pruebas dependientes del entorno permanecen omitidas. No incluye identidad tributaria real ni emisión SUNAT productiva.", en: "Type checking, linting, 453 tests, and the production build passed; 3 environment-dependent tests remain skipped. It includes no real tax identity or production SUNAT issuance." },
     status: { es: "Repositorio público en preparación", en: "Public repository in preparation" },
     gallery: [
       ["assets/projects/rutafactura/dashboard.png", { es: "Dashboard por empresa emisora", en: "Dashboard by issuing company" }],
@@ -241,8 +243,8 @@ export const projects = [
     metrics: [["7", { es: "páginas", en: "pages" }], ["3", { es: "vistas públicas", en: "public views" }], ["2", { es: "entregables", en: "deliverables" }], ["0", { es: "datos personales", en: "personal records" }]],
     problem: { es: "Los indicadores energéticos pierden valor cuando la demanda, la calidad y los eventos se revisan por separado.", en: "Energy indicators lose value when demand, quality, and events are reviewed separately." },
     solution: { es: "Un modelo integrado conecta las métricas técnicas con una lectura ejecutiva, permitiendo detectar tendencias, anomalías y prioridades operativas.", en: "An integrated model connects technical metrics to an executive view, making trends, anomalies, and operational priorities easier to identify." },
-    quality: { es: "PBIX válido con siete páginas, modelo preservado, capturas públicas sanitizadas y libro Excel complementario.", en: "Valid seven-page PBIX, preserved model, sanitized public screenshots, and a complementary Excel workbook." },
-    downloads: [["downloads/reporte-energ/ReporteEnerg_PowerBI_Final.pbix", "PBIX"], ["downloads/reporte-energ/ReporteEnerg_Portafolio_Final.xlsx", "Excel"]],
+    quality: { es: "PBIX válido con siete páginas, modelo preservado, datos simulados y una anomalía de calidad documentada y excluida de los indicadores.", en: "Valid seven-page PBIX, preserved model, simulated data, and one documented data-quality anomaly excluded from the indicators." },
+    downloads: [["downloads/reporte-energ/ReporteEnerg_PowerBI_Final.pbix", "PBIX"], ["downloads/reporte-energ/ReporteEnerg_Portafolio_Final.xlsx", "Excel"], ["downloads/reporte-energ/README.md", "Metodología / Methodology"]],
     gallery: [
       ["assets/projects/reporte-energ/resumen-ejecutivo.png", { es: "Resumen ejecutivo", en: "Executive summary" }],
       ["assets/projects/reporte-energ/operacion-y-demanda.png", { es: "Operación y demanda", en: "Operations and demand" }],
@@ -252,6 +254,7 @@ export const projects = [
   {
     slug: "vuelafacil", icon: "VF", primary: true,
     title: "VuelaFácil Familia",
+    repoUrl: "https://github.com/mcasos/vuelafacil-familia",
     category: { es: "Proyecto principal · Python", en: "Featured project · Python" },
     summary: { es: "Aplicación de escritorio que compara vuelos y calcula el costo familiar real sin mezclar monedas ni transformar datos desconocidos en certezas.", en: "A desktop application that compares flights and calculates the real family cost without mixing currencies or turning unknown data into false certainty." },
     tech: ["Python", "Tkinter", "pytest", "Ruff", "mypy", "Excel"],
@@ -265,6 +268,7 @@ export const projects = [
   {
     slug: "control-alojamiento", icon: "CA", primary: false,
     title: "Control de Alojamiento",
+    repoUrl: "https://github.com/mcasos/control-alojamiento",
     category: { es: "Proyecto complementario · Full-stack", en: "Supporting project · Full-stack" },
     summary: { es: "Panel móvil para administrar estancias, cobranza, caja y cierre diario con persistencia local y sincronización opcional.", en: "A mobile-first dashboard for stays, collections, cash management, and daily close with local persistence and optional synchronization." },
     tech: ["Next.js", "TypeScript", "Supabase", "Zod", "Vitest"],
@@ -282,11 +286,11 @@ export const projects = [
     category: { es: "Proyecto complementario · Automatización", en: "Supporting project · Automation" },
     summary: { es: "Tres workflows que detectan correos relevantes, estructuran el mensaje y envían alertas por Telegram o WhatsApp.", en: "Three workflows that detect relevant emails, structure the message, and send alerts through Telegram or WhatsApp." },
     tech: ["n8n", "IMAP", "Telegram API", "WhatsApp API"],
-    features: { es: ["Entrada IMAP", "Filtro y formato reutilizable", "Tres canales de salida", "JSON sin credenciales"], en: ["IMAP input", "Reusable filtering and formatting", "Three output channels", "Credential-free JSON"] },
+    features: { es: ["Entrada IMAP", "Filtro y formato reutilizable", "Tres canales de salida", "Reintentos controlados sin credenciales"], en: ["IMAP input", "Reusable filtering and formatting", "Three output channels", "Controlled retries without credentials"] },
     metrics: [["3", { es: "workflows", en: "workflows" }], ["9", { es: "nodos", en: "nodes" }], ["0", { es: "conexiones rotas", en: "broken connections" }], ["0", { es: "secretos", en: "secrets" }]],
     problem: { es: "Los correos importantes pueden perderse entre mensajes rutinarios y requieren seguimiento manual.", en: "Important emails can be lost among routine messages and require manual follow-up." },
     solution: { es: "Un núcleo IMAP filtra y normaliza cada alerta antes de enviarla a Telegram, WhatsAble o Meta WhatsApp Cloud.", en: "An IMAP core filters and normalizes each alert before sending it to Telegram, WhatsAble, or Meta WhatsApp Cloud." },
-    quality: { es: "Los tres JSON se parsean, están desactivados, no contienen credenciales y no tienen conexiones rotas. La ejecución real requiere cuentas propias.", en: "All three JSON files parse, are disabled, contain no credentials, and have no broken connections. Live execution requires the user's own accounts." },
+    quality: { es: "Los tres JSON se parsean, están desactivados, no contienen credenciales, no tienen conexiones rotas y aplican tres intentos a cada salida. La ejecución real requiere cuentas propias.", en: "All three JSON files parse, are disabled, contain no credentials, have no broken connections, and apply three attempts to each outbound action. Live execution requires the user's own accounts." },
     downloads: [["downloads/n8n/n8n-email-telegram-workflow.json", "Telegram JSON"], ["downloads/n8n/n8n-email-whatsable-workflow.json", "WhatsAble JSON"], ["downloads/n8n/n8n-email-whatsapp-cloud-workflow.json", "WhatsApp Cloud JSON"]],
   },
 ];

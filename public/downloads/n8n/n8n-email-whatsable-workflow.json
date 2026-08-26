@@ -57,6 +57,9 @@
       "name": "Send WhatsApp via WhatsAble",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
       "position": [
         820,
         300

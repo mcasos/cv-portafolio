@@ -224,7 +224,7 @@ export const projects = [
     problem: { es: "La facturación de transporte combina guías, tickets, viajes, crédito y reglas por cliente. Sin una sola fuente de verdad, los errores se multiplican.", en: "Transport invoicing combines shipping documents, weight tickets, trips, credit terms, and customer rules. Without a single source of truth, errors multiply." },
     solution: { es: "El sistema procesa documentos localmente, exige revisar los datos detectados, conserva versiones y registra cada cambio. Los importes usan enteros para evitar errores de punto flotante.", en: "The system processes documents locally, requires review of detected data, preserves versions, and logs every change. Amounts use integer arithmetic to avoid floating-point errors." },
     quality: { es: "Typecheck, lint, 454 pruebas y build de producción aprobados. No incluye identidad tributaria real ni emisión SUNAT productiva.", en: "Type checking, linting, 454 tests, and the production build passed. It includes no real tax identity or production SUNAT issuance." },
-    repoUrl: "https://github.com/mcasos/rutafactura",
+    status: { es: "Repositorio público en preparación", en: "Public repository in preparation" },
     gallery: [
       ["assets/projects/rutafactura/dashboard.png", { es: "Dashboard por empresa emisora", en: "Dashboard by issuing company" }],
       ["assets/projects/rutafactura/flujo-guiado.png", { es: "Flujo guiado de preparación", en: "Guided preparation flow" }],
@@ -260,7 +260,7 @@ export const projects = [
     problem: { es: "Comparar vuelos familiares requiere equipaje, alcance del precio, monedas y datos incompletos; ordenar solo por tarifa conduce a decisiones erróneas.", en: "Comparing family flights requires handling baggage, price scope, currencies, and incomplete data; sorting only by fare leads to poor decisions." },
     solution: { es: "La lógica separa proveedores, dominio y presentación. Los valores desconocidos permanecen explícitos y el ranking evita comparar cantidades incompatibles.", en: "The architecture separates providers, domain logic, and presentation. Unknown values remain explicit, and ranking avoids comparing incompatible amounts." },
     quality: { es: "243 pruebas, Ruff y mypy aprobados. La evidencia visual se añadirá cuando Tcl/Tk funcione correctamente en el entorno de captura.", en: "243 tests, Ruff, and mypy passed. Visual evidence will be added once Tcl/Tk works correctly in the capture environment." },
-    repoUrl: "https://github.com/mcasos/vuelafacil-familia",
+    status: { es: "Repositorio público en preparación", en: "Public repository in preparation" },
   },
   {
     slug: "control-alojamiento", icon: "CA", primary: false,
@@ -273,7 +273,7 @@ export const projects = [
     problem: { es: "La información dispersa dificulta conocer ocupación, pagos pendientes y consistencia de caja.", en: "Scattered information makes it difficult to track occupancy, pending payments, and cash consistency." },
     solution: { es: "La interfaz prioriza tareas diarias y desacopla dominio, persistencia y seguridad. Puede operar localmente y sincronizar con Supabase cuando está configurado.", en: "The interface prioritizes daily tasks and separates domain, persistence, and security. It can work locally and sync with Supabase when configured." },
     quality: { es: "28 pruebas, lint, typecheck y build aprobados con datos ficticios.", en: "28 tests, linting, type checking, and the production build passed using fictional data." },
-    repoUrl: "https://github.com/mcasos/control-alojamiento",
+    status: { es: "Repositorio público en preparación", en: "Public repository in preparation" },
     gallery: [["assets/projects/control-alojamiento/dashboard.png", { es: "Panel operativo móvil", en: "Mobile operations dashboard" }]],
   },
   {

@@ -49,9 +49,6 @@ function head({ lang, title, description, canonical, alternate, assetPrefix, ima
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
   <meta name="twitter:image" content="${escUrl(ogImage)}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${escUrl(`${assetPrefix}assets/styles.css`)}">
   <script>document.documentElement.classList.add("js-enabled");</script>
 </head>`;
@@ -176,7 +173,7 @@ function casePage(project, lang) {
   return `${head({ lang, title, description: pick(project.summary, lang), canonical, alternate, assetPrefix, image: projectImage })}
 ${header(lang, homeHref, switchHref)}
 <main id="contenido" class="case-study">
-  <section class="case-hero container"><p class="eyebrow">${esc(project.tech.join(" · "))}</p><h1>${esc(project.title)}</h1><p class="case-lead">${esc(pick(project.summary, lang))}</p><div class="case-actions"><a class="btn btn-ghost" href="${escUrl(`${homeHref}#proyectos`)}">← ${esc(l.back)}</a>${repository}</div><div class="case-metrics">${metrics}</div></section>
+  <section class="case-hero container"><p class="eyebrow">${esc(project.tech.join(" · "))}</p><h1>${esc(project.title)}</h1><p class="case-lead">${esc(pick(project.summary, lang))}</p>${project.status ? `<p class="project-status"><span></span>${esc(pick(project.status, lang))}</p>` : ""}<div class="case-actions"><a class="btn btn-ghost" href="${escUrl(`${homeHref}#proyectos`)}">← ${esc(l.back)}</a>${repository}</div><div class="case-metrics">${metrics}</div></section>
   <section class="section alt"><div class="container case-copy"><article><p class="eyebrow">${esc(l.problem)}</p><h2>${esc(l.contextTitle)}</h2><p>${esc(pick(project.problem, lang))}</p></article><article><p class="eyebrow">${esc(l.solution)}</p><h2>${esc(l.approachTitle)}</h2><p>${esc(pick(project.solution, lang))}</p></article></div></section>
   ${gallerySection(project, lang, assetPrefix)}
   <section class="section alt"><div class="container case-note"><p class="eyebrow">${esc(l.quality)}</p><h2>${esc(l.verifiedScope)}</h2><p>${esc(pick(project.quality, lang))}</p>${downloads}</div></section>

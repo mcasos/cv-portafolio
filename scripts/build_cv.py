@@ -43,7 +43,7 @@ COPY = {
             {
                 "title": "RutaFactura",
                 "tech": "Next.js · TypeScript · Prisma · SQLite · OCR",
-                "url": "https://github.com/mcasos/rutafactura",
+                "url": "https://mcasos.github.io/cv-portafolio/projects/rutafactura/",
                 "bullets": [
                     "Desarrollé un MVP auditable para preparar, revisar y simular facturas de transporte con OCR local, confirmación humana, expediente digital y cobranza.",
                     "Validé cálculos monetarios y flujos con 454 pruebas, 89 archivos de prueba y 16 migraciones; SUNAT permanece explícitamente simulado.",
@@ -88,7 +88,7 @@ COPY = {
             {
                 "title": "RutaFactura",
                 "tech": "Next.js · TypeScript · Prisma · SQLite · OCR",
-                "url": "https://github.com/mcasos/rutafactura",
+                "url": "https://mcasos.github.io/cv-portafolio/en/projects/rutafactura/",
                 "bullets": [
                     "Built an auditable MVP to prepare, review, and simulate transport invoices using local OCR, human confirmation, digital records, and collections workflows.",
                     "Validated money calculations and workflows with 454 tests, 89 test files, and 16 migrations; SUNAT remains explicitly simulated.",

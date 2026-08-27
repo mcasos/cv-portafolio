@@ -262,8 +262,9 @@ export const projects = [
     metrics: [["243", { es: "pruebas aprobadas", en: "passing tests" }], ["7", { es: "pruebas omitidas", en: "skipped tests" }], ["42", { es: "archivos tipados", en: "typed source files" }], ["0", { es: "credenciales en demo", en: "demo credentials" }]],
     problem: { es: "Comparar vuelos familiares requiere equipaje, alcance del precio, monedas y datos incompletos; ordenar solo por tarifa conduce a decisiones erróneas.", en: "Comparing family flights requires handling baggage, price scope, currencies, and incomplete data; sorting only by fare leads to poor decisions." },
     solution: { es: "La lógica separa proveedores, dominio y presentación. Los valores desconocidos permanecen explícitos y el ranking evita comparar cantidades incompatibles.", en: "The architecture separates providers, domain logic, and presentation. Unknown values remain explicit, and ranking avoids comparing incompatible amounts." },
-    quality: { es: "243 pruebas, Ruff y mypy aprobados. La evidencia visual se añadirá cuando Tcl/Tk funcione correctamente en el entorno de captura.", en: "243 tests, Ruff, and mypy passed. Visual evidence will be added once Tcl/Tk works correctly in the capture environment." },
+    quality: { es: "243 pruebas, Ruff y mypy aprobados. La captura muestra el modo mock reproducible, sin consultas web ni precios reales.", en: "243 tests, Ruff, and mypy passed. The screenshot shows the reproducible mock mode, with no web queries or live fares." },
     status: { es: "Repositorio público · modo mock reproducible", en: "Public repository · reproducible mock mode" },
+    gallery: [["assets/projects/vuelafacil/demo-mock.png", { es: "Comparación familiar con tres ofertas de demostración", en: "Family comparison with three demonstration offers" }]],
   },
   {
     slug: "control-alojamiento", icon: "CA", primary: false,

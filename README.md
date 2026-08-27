@@ -1,10 +1,10 @@
 # CV + Portafolio bilingüe
 
-Sitio estático de mi, desarrollador full-stack especializado en automatización, IA local y datos. Español vive en `/` e inglés en `/en/`.
+Portafolio bilingüe de Miguel André Casós Torre, desarrollador full-stack especializado en automatización, IA local y datos. La versión en español vive en `/` y la inglesa en `/en/`.
 
 ## Casos publicados
 
-- Caso insignia: LocalForge AI Lab, candidato local `v1.0.0-rc.1` con evidencia de producción y publicación pendiente.
+- Caso insignia: LocalForge AI Lab, candidato local `v1.0.0-rc.1` con evidencia reproducible y repositorio público.
 - Principales: RutaFactura, ReporteEnerg y VuelaFácil Familia.
 - Complementarios: Control de Alojamiento y automatizaciones n8n.
 - Credenciales verificables: IBM Generative AI Fundamentals, capstone de datos con Python de University of Michigan y tres cursos de ciberseguridad de Google.
